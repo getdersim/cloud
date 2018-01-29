@@ -9,6 +9,7 @@
     "logs": "firebase functions:log"
   },
   "dependencies": {
+    "algoliasearch": "^3.24.9",
     "firebase-admin": "~5.4.2",
     "firebase-functions": "^0.7.1",
     "slugify": "^1.2.9"
