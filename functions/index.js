@@ -33,7 +33,7 @@ exports.register = functions.auth.user().onCreate(event => {
   })
 })
 
-exports.onUpdate = functions.firestore.document('document/{slug}')
+exports.onDocumentUpdate = functions.firestore.document('document/{slug}')
   .onUpdate(event => {
     const document = event.data.data()
 
@@ -47,8 +47,23 @@ exports.onUpdate = functions.firestore.document('document/{slug}')
     }
   })
 
-exports.newItem = functions.firestore.document('document/{slug}')
-  .onWrite(event => {
+exports.onDocumentDelete = functions.firestore.document('document/{slug}')
+  .onDelete(event => {
+    const document = event.data.data()
+
+    document.objectID = event.params.slug
+
+    return client.deleteObject(document.slug, err => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log('Remove success', document.slug)
+      }
+    })
+  })
+
+exports.onDocumentCreate = functions.firestore.document('document/{slug}')
+  .onCreate(event => {
     const document = event.data.data()
 
     // SENT FCM PUSH
