@@ -19,7 +19,10 @@ exports.register = functions.auth.user().onCreate(event => {
     replacement: '-',
     lower: true
   })
-  return firestore.doc(`user/${slug}`).set({
+
+  // TODO @cagatay burada es7 compile et ve async await çalışır olsun, sonrasında slug boş mu dolu mu kontrol et ona göre -1 -2 ekle
+
+  return firestore.doc(`user/${uid}`).set({
     email,
     displayName,
     photoURL,
@@ -39,9 +42,14 @@ exports.onDocumentUpdate = functions.firestore.document('document/{slug}')
 
     document.objectID = event.params.slug
 
-    if (document.hasPreview) {
+    if (document.hasPreview && !document.doc && document.text) {
+      let {slug, description, date, displayName, title, text, thumbnail, userSlug, objectID} = document
       const index = client.initIndex(ALGOLIA_INDEX_NAME)
-      return index.saveObject(document)
+      index.saveObject({objectID, slug, description, date, displayName, title, text, thumbnail, userSlug})
+      return event.data.ref.update({
+        text: null,
+        doc: null
+      })
     } else {
       return true
     }
