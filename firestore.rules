@@ -5,7 +5,18 @@ service cloud.firestore {
       allow write: if resource.data.uid == request.auth.uid ||
       																request.resource.data.uid == request.auth.uid;
     }
+    match /user/{uid}/follower/{followerUid} {
+    	allow read;
+      allow write: if resource.data.uid == request.auth.uid ||
+      																request.resource.data.uid == request.auth.uid;
+    }
     match /document/{anyDocument} {
+    	allow read;
+      allow write : if resource.data.uid == request.auth.uid ||
+      																request.resource.data.uid == request.auth.uid ||
+                                      get(/databases/$(database)/documents/user/$(request.auth.uid)).data.isAdmin == true;
+    }
+    match /syllabus/{anyDocument} {
     	allow read;
       allow write : if resource.data.uid == request.auth.uid ||
       																request.resource.data.uid == request.auth.uid ||
