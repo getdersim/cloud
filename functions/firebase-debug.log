@@ -1,0 +1,31 @@
+[debug] [2018-02-07T02:35:33.509Z] ----------------------------------------------------------------------
+[debug] [2018-02-07T02:35:33.511Z] Command:       /usr/local/Cellar/node/6.2.1/bin/node /Users/cagatay/.npm-packages/bin/firebase login:ci
+[debug] [2018-02-07T02:35:33.511Z] CLI Version:   3.16.0
+[debug] [2018-02-07T02:35:33.511Z] Platform:      darwin
+[debug] [2018-02-07T02:35:33.511Z] Node Version:  v9.4.0
+[debug] [2018-02-07T02:35:33.511Z] Time:          Wed Feb 07 2018 05:35:33 GMT+0300 (+03)
+[debug] [2018-02-07T02:35:33.511Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on any device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=149714808&redirect_uri=http%3A%2F%2Flocalhost%3A9005
+[info] 
+[info] Waiting for authentication...
+[debug] [2018-02-07T02:35:43.293Z] >>> HTTP REQUEST POST https://accounts.google.com/o/oauth2/token  
+ { code: '4/QI9KP1PyWh0WFZyzsg4GqKfG8488tsGS5SPYJwcOXdU',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  redirect_uri: 'http://localhost:9005',
+  grant_type: 'authorization_code' } 
+ Wed Feb 07 2018 05:35:43 GMT+0300 (+03)
+[debug] [2018-02-07T02:35:43.328Z] Token Fetch Error: Error
+    at new FirebaseError (/Users/cagatay/.npm-packages/lib/node_modules/firebase-tools/lib/error.js:11:17)
+    at Request._callback (/Users/cagatay/.npm-packages/lib/node_modules/firebase-tools/lib/api.js:34:23)
+    at self.callback (/Users/cagatay/.npm-packages/lib/node_modules/firebase-tools/node_modules/request/request.js:186:22)
+    at Request.emit (events.js:160:13)
+    at Request.onRequestError (/Users/cagatay/.npm-packages/lib/node_modules/firebase-tools/node_modules/request/request.js:878:8)
+    at ClientRequest.emit (events.js:160:13)
+    at TLSSocket.socketErrorListener (_http_client.js:389:9)
+    at TLSSocket.emit (events.js:160:13)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at process._tickCallback (internal/process/next_tick.js:152:19)
